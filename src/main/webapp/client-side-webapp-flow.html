@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Client Side Web Application Flow</title>
+
+    <script type="text/javascript">
+        const CLIENT_ID = "346771432590-1jl63tueac9r5jphsdvd38091i5ft0u4.apps.googleusercontent.com";
+        const AUTH_URL = "https://accounts.google.com/o/oauth2/auth";
+        const REDIRECT_URI = 'http://localhost:8080/oauth2-flows-demo/client-side-webapp-flow-callback.html';
+        const SCOPE = 'https://www.googleapis.com/auth/calendar.readonly';
+
+        var state = new Date().getTime() * Math.random();
+
+        var url  = AUTH_URL +
+                "?response_type=token" +
+                "&client_id=" + encodeURIComponent(CLIENT_ID) +
+                "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
+                "&scope=" + encodeURIComponent(SCOPE) +
+                "&state=" + encodeURIComponent(state);
+
+        function startOAuth() {
+            window.open(url, "_blank", "width=500;height=400");
+        }
+
+        function setOAuthParameters(params) {
+            alert("Access token: " + params["access_token"]);
+        }
+    </script>
+</head>
+
+<body>
+    <a href="#" onclick="startOAuth(); return false;">Log in with Google</a>
+</body>
+</html>

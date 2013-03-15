@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Client Side Web Application Flow Callback</title>
+
+    <script>
+        const REGEX = /([^&=]+)=([^&]*)/g;
+
+        var hash = window.location.hash;
+        var parameters = {};
+        var m;
+        while (m = REGEX.exec(hash)) {
+            var key = decodeURIComponent(m[1]);
+            var value = decodeURIComponent(m[2]);
+            parameters[key] = value;
+        }
+
+        window.opener.setOAuthParameters(parameters);
+        window.close();
+    </script>
+</head>
+
+<body>
+</body>
+</html>
