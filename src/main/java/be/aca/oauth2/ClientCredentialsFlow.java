@@ -1,7 +1,11 @@
 package be.aca.oauth2;
 
-import be.aca.oauth2.constants.OAuth2Provider;
-import be.aca.oauth2.util.Util;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -10,11 +14,8 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import be.aca.oauth2.constants.OAuth2Provider;
+import be.aca.oauth2.util.Util;
 
 /**
  * Client Credentials Flow implementation.

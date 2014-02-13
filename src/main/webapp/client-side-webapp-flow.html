@@ -3,14 +3,14 @@
     <title>Client Side Web Application Flow</title>
 
     <script type="text/javascript">
-        const CLIENT_ID = "346771432590-1jl63tueac9r5jphsdvd38091i5ft0u4.apps.googleusercontent.com";
+        const CLIENT_ID = "83203796423-5cktgg456ndlct1g9r3euhudehv4r6nd.apps.googleusercontent.com";
         const AUTH_URL = "https://accounts.google.com/o/oauth2/auth";
-        const REDIRECT_URI = 'http://localhost:8080/oauth2-flows-demo/client-side-webapp-flow-callback.html';
-        const SCOPE = 'https://www.googleapis.com/auth/calendar.readonly';
+        const REDIRECT_URI = 'http://localhost:8080/client-side-webapp-flow-callback.html';
+        const SCOPE = 'https://www.google.com/m8/feeds';
 
         var state = new Date().getTime() * Math.random();
 
-        var url  = AUTH_URL +
+        var url = AUTH_URL +
                 "?response_type=token" +
                 "&client_id=" + encodeURIComponent(CLIENT_ID) +
                 "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
@@ -28,6 +28,6 @@
 </head>
 
 <body>
-    <a href="#" onclick="startOAuth(); return false;">Log in with Google</a>
+<a href="#" onclick="startOAuth(); return false;">Log in with Google</a>
 </body>
 </html>

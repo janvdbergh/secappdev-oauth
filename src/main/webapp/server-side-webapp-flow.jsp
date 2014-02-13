@@ -1,8 +1,8 @@
+<%@ page import="java.net.URL" %>
+<%@ page import="org.apache.commons.lang3.RandomStringUtils" %>
+<%@ page import="org.apache.http.client.utils.URIBuilder" %>
 <%@ page import="be.aca.oauth2.constants.OAuth2Provider" %>
 <%@ page import="be.aca.oauth2.util.Util" %>
-<%@ page import="org.apache.commons.lang.RandomStringUtils" %>
-<%@ page import="org.apache.http.client.utils.URIBuilder" %>
-<%@ page import="java.net.URL" %>
 
 <%
     // Build URI

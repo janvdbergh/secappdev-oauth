@@ -1,13 +1,13 @@
-<%@ page import="be.aca.oauth2.constants.OAuth2Provider" %>
-<%@ page import="be.aca.oauth2.util.Util" %>
-<%@ page import="org.apache.commons.lang.StringUtils" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="org.apache.commons.lang3.StringUtils" %>
 <%@ page import="org.apache.http.NameValuePair" %>
 <%@ page import="org.apache.http.client.methods.HttpGet" %>
 <%@ page import="org.apache.http.client.utils.URIBuilder" %>
 <%@ page import="org.apache.http.message.BasicNameValuePair" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Map" %>
+<%@ page import="be.aca.oauth2.constants.OAuth2Provider" %>
+<%@ page import="be.aca.oauth2.util.Util" %>
 
 <%
     // Verify the state
@@ -42,31 +42,31 @@
 </head>
 
 <body>
-    <p>
-        Returned values: <%= values %>
-    </p>
+<p>
+    Returned values: <%= values %>
+</p>
 
-    <%
-        // Validate the user id
-        URIBuilder builder = new URIBuilder(OAuth2Provider.GOOGLE_TOKENINFO_URI);
-        builder.addParameter("id_token", values.get("id_token"));
+<%
+    // Validate the user id
+    URIBuilder builder = new URIBuilder(OAuth2Provider.GOOGLE_TOKENINFO_URI);
+    builder.addParameter("id_token", values.get("id_token"));
 
-        String tokenInfo = Util.sendHttpGet(builder.toString());
-    %>
+    String tokenInfo = Util.sendHttpGet(builder.toString());
+%>
 
-    <p>
-        Token info: <%= tokenInfo %>
-    </p>
+<p>
+    Token info: <%= tokenInfo %>
+</p>
 
-    <%
-        // Get the user info
-        HttpGet get = new HttpGet(OAuth2Provider.GOOGLE_USERINFO_URI);
-        get.setHeader("Authorization", "Bearer " + values.get("access_token"));
-        String userInfo = Util.sendHttpRequest(get);
-    %>
+<%
+    // Get the user info
+    HttpGet get = new HttpGet(OAuth2Provider.GOOGLE_USERINFO_URI);
+    get.setHeader("Authorization", "Bearer " + values.get("access_token"));
+    String userInfo = Util.sendHttpRequest(get);
+%>
 
-    <p>
-        User info: <%= userInfo %>
-    </p>
+<p>
+    User info: <%= userInfo %>
+</p>
 </body>
 </html>
