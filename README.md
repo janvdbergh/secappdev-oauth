@@ -1,8 +1,8 @@
-secappdev2013-oauth
+secappdev-oauth
 ===================
 
-Demo code for the OAuth 2 presentation on SecAppDev 2013.  
-Visit http://prezi.com/weexvtpr6wum/oauth-20/ for our prezi.
+Demo code for the OAuth 2 presentation on SecAppDev 2015.
+Visit https://prezi.com/6ujhuoauqvde/oauth-20-2015/ for our prezi.
 
 This code is protected under the Apache License, version 2.
-See LICENSE.txt and NOTICE.txt.
+See LICENSE and NOTICE.
