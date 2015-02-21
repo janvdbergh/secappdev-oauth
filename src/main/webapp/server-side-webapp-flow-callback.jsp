@@ -6,7 +6,7 @@
 <%@ page import="org.apache.http.client.methods.HttpGet" %>
 <%@ page import="org.apache.http.client.utils.URIBuilder" %>
 <%@ page import="org.apache.http.message.BasicNameValuePair" %>
-<%@ page import="be.aca.oauth2.constants.OAuth2Provider" %>
+<%@ page import="be.aca.oauth2.constants.OAuth2ProviderConstants" %>
 <%@ page import="be.aca.oauth2.util.Util" %>
 
 <%
@@ -21,13 +21,13 @@
     // Build parameter list
     List<NameValuePair> parameters = new ArrayList<NameValuePair>();
     parameters.add(new BasicNameValuePair("grant_type", "authorization_code"));
-    parameters.add(new BasicNameValuePair("client_id", OAuth2Provider.GOOGLE_CLIENT_ID));
-    parameters.add(new BasicNameValuePair("client_secret", OAuth2Provider.GOOGLE_CLIENT_SECRET));
+    parameters.add(new BasicNameValuePair("client_id", OAuth2ProviderConstants.GOOGLE_CLIENT_ID));
+    parameters.add(new BasicNameValuePair("client_secret", OAuth2ProviderConstants.GOOGLE_CLIENT_SECRET));
     parameters.add(new BasicNameValuePair("code", request.getParameter("code")));
     parameters.add(new BasicNameValuePair("redirect_uri", request.getRequestURL().toString()));
 
     // Send post to token service
-    String output = Util.sendHttpPost(OAuth2Provider.GOOGLE_TOKEN_URL, parameters);
+    String output = Util.sendHttpPost(OAuth2ProviderConstants.GOOGLE_TOKEN_URL, parameters);
     if (output == null) {
         return;
     }
@@ -35,7 +35,7 @@
     // Extract JSON
     Map<String, String> values = Util.parseJson(output);
 %>
-
+<!DOCTYPE html>
 <html>
 <head>
     <title>Server Side Web Application Flow Callback</title>
@@ -48,7 +48,7 @@
 
 <%
     // Validate the user id
-    URIBuilder builder = new URIBuilder(OAuth2Provider.GOOGLE_TOKENINFO_URI);
+    URIBuilder builder = new URIBuilder(OAuth2ProviderConstants.GOOGLE_TOKENINFO_URI);
     builder.addParameter("id_token", values.get("id_token"));
 
     String tokenInfo = Util.sendHttpGet(builder.toString());
@@ -60,7 +60,7 @@
 
 <%
     // Get the user info
-    HttpGet get = new HttpGet(OAuth2Provider.GOOGLE_USERINFO_URI);
+    HttpGet get = new HttpGet(OAuth2ProviderConstants.GOOGLE_USERINFO_URI);
     get.setHeader("Authorization", "Bearer " + values.get("access_token"));
     String userInfo = Util.sendHttpRequest(get);
 %>

@@ -1,23 +1,15 @@
 package be.aca.oauth2.util;
 
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.*;
-
-/**
- * Dialog to ask for credentials
- */
 public class CredentialsDialog extends JDialog {
 
     private final JTextField userName;
     private final JPasswordField password;
     private final JTextField securityToken;
-    private final JButton okButton;
-    private final JButton cancelButton;
     private boolean result;
 
     public CredentialsDialog() {
@@ -36,22 +28,14 @@ public class CredentialsDialog extends JDialog {
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         add(buttonPanel, createConstraints(0, 3, 2, 1));
-        buttonPanel.add(okButton = new JButton("Ok"));
-        buttonPanel.add(cancelButton = new JButton("Cancel"));
 
-        okButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                setResult(true);
-            }
-        });
+        JButton okButton= new JButton("Ok");
+        okButton.addActionListener(actionEvent -> setResult(true));
+        buttonPanel.add(okButton);
 
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                setResult(false);
-            }
-        });
+        JButton cancelButton = new JButton("Cancel");
+        buttonPanel.add(cancelButton);
+        cancelButton.addActionListener(actionEvent -> setResult(false));
 
         addWindowListener(new WindowAdapter() {
             @Override

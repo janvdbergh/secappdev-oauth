@@ -1,15 +1,8 @@
 package be.aca.oauth2.util;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -17,11 +10,16 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import javax.servlet.http.HttpServletRequest;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Util {
 
@@ -42,7 +40,7 @@ public class Util {
     }
 
     public static String sendHttpRequest(HttpUriRequest request) throws IOException {
-        HttpResponse response = new DefaultHttpClient().execute(request);
+        HttpResponse response = HttpClientBuilder.create().build().execute(request);
         if (response.getStatusLine().getStatusCode() != 200) {
             System.err.println(response.getStatusLine());
             response.getEntity().writeTo(System.err);
@@ -55,7 +53,7 @@ public class Util {
     }
 
     public static Map<String, String> parseJson(String json) {
-        Map<String, String> result = new HashMap<String, String>();
+        Map<String, String> result = new HashMap<>();
 
         if (StringUtils.isBlank(json)) {
             return result;
@@ -70,7 +68,7 @@ public class Util {
     }
 
     public static Map<String, String> parseFormEncoding(String body) {
-        Map<String, String> result = new HashMap<String, String>();
+        Map<String, String> result = new HashMap<>();
 
         String[] parameters = body.split("&");
         for(String parameter : parameters) {

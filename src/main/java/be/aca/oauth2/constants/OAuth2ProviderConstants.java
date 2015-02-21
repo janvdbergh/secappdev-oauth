@@ -1,9 +1,6 @@
 package be.aca.oauth2.constants;
 
-/**
- * Constants used in other classes.
- */
-public class OAuth2Provider {
+public class OAuth2ProviderConstants {
 
     public static final String GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/auth";
     public static final String GOOGLE_TOKEN_URL = "https://accounts.google.com/o/oauth2/token";
