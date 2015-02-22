@@ -26,13 +26,13 @@ public class ResourceOwnerPasswordFlow {
         // Prepare parameters
         List<NameValuePair> parameters = new ArrayList<>();
         parameters.add(new BasicNameValuePair("grant_type", "password"));
-        parameters.add(new BasicNameValuePair("client_id", OAuth2ProviderConstants.FACEBOOK_CLIENT_ID));
-        parameters.add(new BasicNameValuePair("client_secret", OAuth2ProviderConstants.FACEBOOK_CLIENT_ID));
+        parameters.add(new BasicNameValuePair("client_id", OAuth2ProviderConstants.SALESFORCE_CLIENT_ID));
+        parameters.add(new BasicNameValuePair("client_secret", OAuth2ProviderConstants.SALESFORCE_CLIENT_SECRET));
         parameters.add(new BasicNameValuePair("username", userName));
         parameters.add(new BasicNameValuePair("password", password + securityToken));
 
         // Call Salesforce
-        String response = Util.sendHttpPost(OAuth2ProviderConstants.FACEBOOK_TOKEN_URL, parameters);
+        String response = Util.sendHttpPost(OAuth2ProviderConstants.SALESFORCE_TOKEN_URL, parameters);
         Map<String, String> values = Util.parseJson(response);
 
         System.out.println(values);

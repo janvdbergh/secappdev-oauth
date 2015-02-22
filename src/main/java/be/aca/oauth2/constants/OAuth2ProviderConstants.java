@@ -11,8 +11,8 @@ public class OAuth2ProviderConstants {
     public static final String GOOGLE_USERINFO_URI = "https://www.googleapis.com/oauth2/v1/userinfo";
 
     public static final String SALESFORCE_TOKEN_URL = "https://test.salesforce.com/services/oauth2/token";
-    public static final String SALESFORCE_CLIENT_ID = "3MVG9Gmy2zmPB01p45NOc82kqJaeVZyTJODIwQ8Q.X9xKLxeyEeTOUJRMXzZsLUxZRAcpY_Wlv104tSlmM8xE";
-    public static final String SALESFORCE_CLIENT_SECRET = "3576206772549723742";
+    public static final String SALESFORCE_CLIENT_ID = "3MVG9Gmy2zmPB01p45NOc82kqJUz8qu1ZgPD5jEMxBfS1eWpxYdHfuwH9105Y9t2_CdlLYYa8E9VIJ37d56Ae";
+    public static final String SALESFORCE_CLIENT_SECRET = "6611071189128784822";
 
     public static final String FACEBOOK_CLIENT_ID = "1447225828842457";
     public static final String FACEBOOK_CLIENT_SECRET = "76c582c96617067fe20a1662a32a1288";
